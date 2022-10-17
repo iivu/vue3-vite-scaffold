@@ -1,0 +1,32 @@
+{
+  "name": "jia-bei-ai-te-xuan-chuan-da-shi",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:test": "vite --mode test --host",
+    "dev:prod": "vite --mode production --host",
+    "build:test": "vue-tsc --noEmit && vite build  --mode test",
+    "build:prod": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "animejs": "^3.2.1",
+    "axios": "^0.27.2",
+    "pinia": "^2.0.22",
+    "vant": "^3.6.2",
+    "vue": "^3.2.37",
+    "vue-router": "^4.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.7.18",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "autoprefixer": "^10.4.11",
+    "sass": "^1.54.9",
+    "typescript": "^4.6.4",
+    "unplugin-vue-components": "^0.22.7",
+    "vite": "^3.1.0",
+    "vite-plugin-html": "^3.2.0",
+    "vue-tsc": "^0.40.4"
+  }
+}
