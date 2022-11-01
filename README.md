@@ -10,7 +10,7 @@ degit git@github.com:iivu/vue3-vite-scaffold.git [your workspace]
 degit https://github.com/iivu/vue3-vite-scaffold.git [your workspace]
 ```
 
-## Just use `git clone`
+## Use `git clone`
 
 ```bash
 // ssh
