@@ -15,7 +15,7 @@ const config = ({ mode, command }) => {
   const { APP_TITLE = '', APP_BASE_URL = '' } = loadEnv(mode, process.cwd(), envPrefix);
   return {
     base: inOnline ? APP_BASE_URL : '/',
-    envPrefix: 'APP_',
+    envPrefix,
     plugins: [
       vue(),
       createHtmlPlugin({

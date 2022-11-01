@@ -1,14 +1,16 @@
 <template>
-  <RouterView/>
+  <RouterView />
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
-
 </script>
 
 <style lang="scss">
-  *, *:after, *:before {
+  @import 'virtual:windi.css';
+  *,
+  *:after,
+  *:before {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -44,5 +46,4 @@
     min-height: 100vh;
     margin: 0 auto;
   }
-
 </style>

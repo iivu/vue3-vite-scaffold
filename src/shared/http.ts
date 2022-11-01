@@ -8,7 +8,6 @@ type HttpData = { [key: string]: any };
 type BaseApiResponse = { code: number; msg: string; data: any };
 type AxiosRequestConfigWithCustomConfig<T> = AxiosRequestConfig<T> & HttpConfig;
 
-
 const httpClient = axios.create({
   baseURL: import.meta.env.APP_API_PREFIX,
   timeout: 20000,
@@ -28,10 +27,14 @@ function httpStatusInterceptor(res: AxiosResponse<BaseApiResponse>) {
 
 function httpClientErrorHandler(err: { msg?: string; catchError?: boolean; message?: string }) {
   // 错误有可能是app内自定义的错误或者是axios自己抛出的错误
+  // axios抛出错误可以通过err.config 获取到这次请求的相关配置，包括 catchError,loading
   // @ts-ignore
   const isAxiosError = err instanceof AxiosError;
   hideLoading();
-  if (err.catchError || isAxiosError) showModal(err.msg || err.message || '网络繁忙');
+  // @ts-ignore
+  if (err.catchError || (isAxiosError && err.config && err.config.catchError)) {
+    showModal(err.msg || err.message || '网络繁忙');
+  }
   return Promise.reject(err);
 }
 
@@ -56,7 +59,7 @@ export function post<T>(path: string, data?: HttpData, config?: Partial<HttpConf
   if (config.loading) showLoading();
   return httpClient
     .post<T>(path, data, {
-      headers:{},
+      headers: {},
       ...defaultHttpConfig,
       ...config,
     })
