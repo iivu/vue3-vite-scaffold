@@ -1,12 +1,14 @@
+import path from 'path';
+
 import { defineConfig, loadEnv } from 'vite';
-import type { UserConfigFn } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import WindiCSS from 'vite-plugin-windicss';
 import vue from '@vitejs/plugin-vue';
 import autoprefixer from 'autoprefixer';
 import VueComponent from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
 
-import path from 'path';
+import type { UserConfigFn } from 'vite';
 
 // https://vitejs.dev/config/
 const config = ({ mode, command }) => {
@@ -29,6 +31,7 @@ const config = ({ mode, command }) => {
       VueComponent({
         resolvers: [VantResolver()],
       }),
+      WindiCSS(),
     ],
     build: {
       target: 'es2015',
