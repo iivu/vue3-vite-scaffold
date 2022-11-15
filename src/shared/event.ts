@@ -1,11 +1,11 @@
 type EventName = string;
-type EventHandller = (...args: any[]) => any;
-type EventQueue = { [key: EventName]: EventHandller[] };
+type EventHandler = (...args: any[]) => any;
+type EventQueue = { [key: EventName]: EventHandler[] };
 
 class EventCenter {
   eventQueue: EventQueue = {};
 
-  on(event: EventName, handler: EventHandller) {
+  on(event: EventName, handler: EventHandler) {
     if (this.eventQueue[event] && !this.eventQueue[event].includes(handler)) {
       this.eventQueue[event].push(handler);
     } else if (!this.eventQueue[event]) {
@@ -14,7 +14,7 @@ class EventCenter {
     }
   }
 
-  off(event: string, handler: EventHandller) {
+  off(event: string, handler: EventHandler) {
     if (!handler && this.eventQueue[event]) {
       delete this.eventQueue[event];
       return;
