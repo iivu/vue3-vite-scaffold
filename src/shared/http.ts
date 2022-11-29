@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import type { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-import { showModal, showLoading, hideLoading } from './index';
+import { showModal, showLoading, hideLoading } from '@iivu/utils';
 
 type HttpConfig = { loading: boolean; catchError: boolean };
 type HttpData = { [key: string]: any };

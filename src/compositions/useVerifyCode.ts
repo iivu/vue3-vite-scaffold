@@ -1,7 +1,6 @@
 import { ref } from 'vue';
 
-import { validateTelephone } from '@/shared/validate';
-import { showToast } from '@/shared';
+import { validateTelephone,showToast } from '@iivu/utils';
 import * as api from '@/services/api';
 
 export function useVerifyCode() {

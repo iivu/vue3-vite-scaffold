@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { getRandomStr } from '@/utils/index';
+import { getRandomStr } from '@iivu/utils';
 import * as types from '@/types';
 
 let wechatSDKConfig: types.WechatSDKConfig | null = null;

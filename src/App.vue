@@ -1,13 +1,14 @@
 <template>
-  <RouterView />
+  <Home/>
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
+
+  import Home from '@/views/Home.vue'
 </script>
 
 <style lang="scss">
-  @import 'virtual:windi.css';
   *,
   *:after,
   *:before {

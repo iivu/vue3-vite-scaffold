@@ -1,4 +1,4 @@
-import { getPageURL } from '@/shared';
+import { getPageURL } from '@iivu/utils';
 import { useWechatConfig } from './useWechatConfig';
 
 type ShareConfig = { title?: string; link?: string; desc?: string; imgUrl?: string };

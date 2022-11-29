@@ -11,6 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@iivu/utils": "^0.0.2",
     "animejs": "^3.2.1",
     "axios": "^0.27.2",
     "md5": "^2.3.0",
