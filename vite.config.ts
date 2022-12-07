@@ -7,6 +7,8 @@ import vue from '@vitejs/plugin-vue';
 import autoprefixer from 'autoprefixer';
 import VueComponent from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
+import IconsResolver from 'unplugin-icons/resolver';
+import Icons from 'unplugin-icons/vite';
 
 import type { UserConfigFn } from 'vite';
 
@@ -20,6 +22,7 @@ const config = ({ mode, command }) => {
     envPrefix,
     plugins: [
       vue(),
+      WindiCSS(),
       createHtmlPlugin({
         minify: inOnline,
         inject: {
@@ -29,9 +32,12 @@ const config = ({ mode, command }) => {
         },
       }),
       VueComponent({
-        resolvers: [VantResolver()],
+        resolvers: [
+          VantResolver(),
+          IconsResolver({ prefix:'icon',enabledCollections: ['ant-design'] })
+        ],
       }),
-      WindiCSS(),
+      Icons({ compiler: 'vue3' }),
     ],
     build: {
       target: 'es2015',
