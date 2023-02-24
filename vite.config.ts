@@ -2,9 +2,9 @@ import path from 'path';
 
 import { defineConfig, loadEnv } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
-import WindiCSS from 'vite-plugin-windicss';
 import vue from '@vitejs/plugin-vue';
 import autoprefixer from 'autoprefixer';
+import tailwindcss from 'tailwindcss';
 import VueComponent from 'unplugin-vue-components/vite';
 import { VantResolver } from 'unplugin-vue-components/resolvers';
 import IconsResolver from 'unplugin-icons/resolver';
@@ -22,7 +22,6 @@ const config = ({ mode, command }) => {
     envPrefix,
     plugins: [
       vue(),
-      WindiCSS(),
       createHtmlPlugin({
         minify: inOnline,
         inject: {
@@ -53,7 +52,7 @@ const config = ({ mode, command }) => {
     },
     css: {
       postcss: {
-        plugins: [autoprefixer],
+        plugins: [autoprefixer,tailwindcss],
       },
     },
   };

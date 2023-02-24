@@ -1,21 +1,17 @@
 <template>
-  <Home/>
+  <Home />
 </template>
 
 <script setup lang="ts">
   import { ref, onMounted } from 'vue';
 
-  import Home from '@/views/Home.vue'
+  import Home from '@/views/Home.vue';
 </script>
 
-<style lang="scss">
-  *,
-  *:after,
-  *:before {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+<style>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
 
   body {
     font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
@@ -25,21 +21,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
-  }
-
-  a {
-    color: indianred;
-    text-decoration: inherit;
-  }
-
-  a:hover {
-    color: indianred;
-  }
-
-  input {
-    background-color: transparent;
-    border: none;
-    outline: none;
   }
 
   #app {
