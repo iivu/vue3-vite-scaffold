@@ -1,4 +1,5 @@
 import path from 'path';
+import url from 'url';
 
 import { defineConfig, loadEnv } from 'vite';
 import { createHtmlPlugin } from 'vite-plugin-html';
@@ -11,6 +12,9 @@ import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 
 import type { UserConfigFn } from 'vite';
+
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 const config = ({ mode, command }) => {
