@@ -11,27 +11,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@iivu/utils": "^2.0.0",
+    "@iivu/utils": "^2.0.6",
     "animejs": "^3.2.1",
     "axios": "^0.27.2",
     "md5": "^2.3.0",
-    "nanoid": "^4.0.1",
-    "pinia": "^2.0.32",
-    "tailwindcss": "^3.2.7",
-    "vant": "^4.0.11",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "nanoid": "^4.0.2",
+    "pinia": "^2.1.6",
+    "vant": "^4.6.4",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
   },
   "devDependencies": {
-    "@iconify-json/ant-design": "^1.1.5",
-    "@types/node": "^18.14.1",
-    "@vitejs/plugin-vue": "^3.2.0",
-    "autoprefixer": "^10.4.13",
-    "sass": "^1.58.3",
+    "@iconify-json/ant-design": "^1.1.8",
+    "@types/node": "^18.17.4",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "autoprefixer": "^10.4.14",
+    "sass": "^1.64.2",
+    "tailwindcss": "^3.3.3",
     "typescript": "^4.9.5",
     "unplugin-icons": "^0.14.15",
     "unplugin-vue-components": "^0.22.12",
-    "vite": "^3.2.5",
+    "vite": "^4.4.9",
     "vite-plugin-html": "^3.2.0",
     "vue-tsc": "^0.40.13"
   }
