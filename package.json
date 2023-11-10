@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@iivu/utils": "2.0.6",
+    "@tanstack/vue-query": "^5.8.1",
     "animejs": "3.2.1",
     "axios": "0.27.2",
     "md5": "2.3.0",
