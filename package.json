@@ -1,5 +1,5 @@
 {
-  "name": "jia-bei-ai-te-xuan-chuan-da-shi",
+  "name": "vue3-vite-scaffold",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@iivu/utils": "2.0.6",
-    "@tanstack/vue-query": "^5.8.1",
+    "@tanstack/vue-query": "5.14.6",
     "animejs": "3.2.1",
     "axios": "0.27.2",
     "md5": "2.3.0",
@@ -32,8 +32,10 @@
     "typescript": "4.9.5",
     "unplugin-icons": "0.14.15",
     "unplugin-vue-components": "0.22.12",
-    "vite": "4.5.0",
+    "vite": "5.0.10",
     "vite-plugin-html": "3.2.0",
-    "vue-tsc": "0.40.13"
+    "vue-tsc": "0.40.13",
+    "@vitejs/plugin-legac": "5.2.0",
+    "terser": "5.26.0"
   }
 }
