@@ -9,7 +9,7 @@ type BaseApiResponse = { code: number; msg: string; data: any };
 type AxiosRequestConfigWithCustomConfig<T> = AxiosRequestConfig<T> & HttpConfig;
 
 const httpClient = axios.create({
-  baseURL: import.meta.env.APP_API_PREFIX,
+  baseURL: __VITE_COMMAND__ === 'build' ? import.meta.env.APP_API_PREFIX : '/api',
   timeout: 20000,
   // withCredentials: true,
 });

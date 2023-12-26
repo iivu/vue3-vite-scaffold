@@ -11,23 +11,31 @@ import { VantResolver } from 'unplugin-vue-components/resolvers';
 import IconsResolver from 'unplugin-icons/resolver';
 import Icons from 'unplugin-icons/vite';
 
-import type { UserConfigFn } from 'vite';
+import type { UserConfigFn, ProxyOptions } from 'vite';
 
 const __filename = url.fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // https://vitejs.dev/config/
 const config = ({ mode, command }) => {
-  const inOnline = command === 'build';
+  const isOnline = command === 'build';
   const envPrefix = 'APP_';
-  const { APP_TITLE = '', APP_BASE_URL = '' } = loadEnv(mode, process.cwd(), envPrefix);
+  const { APP_TITLE = '', APP_BASE_URL = '', APP_API_PREFIX = '' } = loadEnv(mode, process.cwd(), envPrefix);
+  const base = isOnline ? APP_BASE_URL : '/';
+  const proxyConfigs: Record<string, string | ProxyOptions> = {
+    '^/api/.*': {
+      target: APP_API_PREFIX,
+      changeOrigin: true,
+      rewrite: (path) => path.replace(/^\/api/, ''),
+    },
+  };
   return {
-    base: inOnline ? APP_BASE_URL : '/',
+    base,
     envPrefix,
     plugins: [
       vue(),
       createHtmlPlugin({
-        minify: inOnline,
+        minify: isOnline,
         inject: {
           data: {
             title: APP_TITLE,
@@ -35,17 +43,14 @@ const config = ({ mode, command }) => {
         },
       }),
       VueComponent({
-        resolvers: [
-          VantResolver(),
-          IconsResolver({ prefix:'icon',enabledCollections: ['ant-design'] })
-        ],
+        resolvers: [VantResolver(), IconsResolver({ prefix: 'icon', enabledCollections: ['ant-design'] })],
       }),
       Icons({ compiler: 'vue3' }),
     ],
     build: {
       target: 'es2015',
       assetsInlineLimit: 1024,
-      sourcemap: !inOnline,
+      sourcemap: !isOnline,
       emptyOutDir: true,
     },
     resolve: {
@@ -56,8 +61,12 @@ const config = ({ mode, command }) => {
     },
     css: {
       postcss: {
-        plugins: [autoprefixer,tailwindcss],
+        plugins: [autoprefixer, tailwindcss],
       },
+    },
+    server: {
+      port: 6021,
+      proxy: isOnline ? null : proxyConfigs,
     },
   };
 };
