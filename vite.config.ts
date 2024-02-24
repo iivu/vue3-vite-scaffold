@@ -44,6 +44,7 @@ const config = ({ mode, command }) => {
       }),
       VueComponent({
         resolvers: [VantResolver(), IconsResolver({ prefix: 'icon', enabledCollections: ['ant-design'] })],
+        dts: 'src/types/components.d.ts',
       }),
       Icons({ compiler: 'vue3' }),
     ],
