@@ -14,7 +14,7 @@
     "@iivu/utils": "2.0.6",
     "@tanstack/vue-query": "5.29.0",
     "animejs": "3.2.2",
-    "axios": "0.28.1",
+    "axios": "1.6.8",
     "md5": "2.3.0",
     "nanoid": "5.0.7",
     "pinia": "2.1.7",
