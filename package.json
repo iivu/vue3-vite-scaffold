@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "author": "Leo Cheung <leozhang621@gmail.com>",
   "scripts": {
     "dev:test": "vite --mode test --host",
     "dev:prod": "vite --mode production --host",
