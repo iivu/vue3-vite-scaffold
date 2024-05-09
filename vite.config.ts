@@ -32,6 +32,9 @@ const config = ({ mode, command }) => {
   return {
     base,
     envPrefix,
+    define: {
+      __VITE_COMMAND__: JSON.stringify(command),
+    },
     plugins: [
       vue(),
       createHtmlPlugin({

@@ -7,6 +7,7 @@ type HttpConfig = { loading: boolean; catchError: boolean };
 type HttpData = { [key: string]: any };
 type BaseApiResponse = { code: number; msg: string; data: any };
 type AxiosRequestConfigWithCustomConfig<T> = AxiosRequestConfig<T> & HttpConfig;
+type CustomError = { msg?: string; catchError?: boolean; message?: string; code?: number };
 
 const httpClient = axios.create({
   baseURL: __VITE_COMMAND__ === 'build' ? import.meta.env.APP_API_PREFIX : '/api',
@@ -20,12 +21,12 @@ function httpStatusInterceptor(res: AxiosResponse<BaseApiResponse>) {
   const config = res.config as AxiosRequestConfigWithCustomConfig<any>;
   if (config.loading) hideLoading();
   if (data.code !== 0) {
-    return Promise.reject({ msg: data.msg, catchError: config.catchError });
+    return Promise.reject({ msg: data.msg, catchError: config.catchError, code: data.code });
   }
   return data.data || {};
 }
 
-function httpClientErrorHandler(err: { msg?: string; catchError?: boolean; message?: string }) {
+function httpClientErrorHandler(err: CustomError | AxiosError) {
   // 错误有可能是app内自定义的错误或者是axios自己抛出的错误
   // axios抛出错误可以通过err.config 获取到这次请求的相关配置，包括 catchError,loading
   // @ts-ignore
@@ -33,6 +34,7 @@ function httpClientErrorHandler(err: { msg?: string; catchError?: boolean; messa
   hideLoading();
   // @ts-ignore
   if (err.catchError || (isAxiosError && err.config && err.config.catchError)) {
+    // @ts-ignore
     showModal(err.msg || err.message || '网络繁忙');
   }
   return Promise.reject(err);
