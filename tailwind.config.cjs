@@ -1,7 +1,7 @@
 function createSpacing() {
   const spacing = {}
-  for (let i = 0.5; i <= 187.5; i += 0.5) {
-    spacing[i] = `${(i * 0.04).toFixed(2)}rem`
+  for (let i = 1; i <= 750; i += 1) {
+    spacing[i] = `${(i * 0.01).toFixed(2)}rem`
   }
   return spacing
 }
