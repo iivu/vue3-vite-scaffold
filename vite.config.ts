@@ -38,7 +38,7 @@ const config = ({ mode, command }) => {
     },
     plugins: [
       vue(),
-      legacy(),
+      legacy({ targets: ['iOS>=10, chrome>=49'] }),
       createHtmlPlugin({
         minify: isOnline,
         inject: {
