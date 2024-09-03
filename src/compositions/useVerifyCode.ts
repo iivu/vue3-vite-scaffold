@@ -9,6 +9,9 @@ export function useVerifyCode() {
   const remainTime = ref(0);
 
   async function send(tel: string) {
+    if (lock.value) {
+      return;
+    }
     if (!validateTelephone(tel)) {
       showToast('请输入正确的手机号码');
       return;
