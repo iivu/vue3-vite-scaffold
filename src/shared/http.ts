@@ -1,10 +1,9 @@
 import axios, { AxiosError } from 'axios';
+import * as iivu from '@iivu/utils';
 import type { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-import * as iivu from '@iivu/utils';
-
 type HttpConfig = { loading: boolean; catchError: boolean };
-type HttpData = { [key: string]: any };
+type HttpPayload = { [key: string]: any };
 type BaseApiResponse = { code: number; msg: string; data: any };
 type AxiosRequestConfigWithCustomConfig<T> = AxiosRequestConfig<T> & HttpConfig;
 type CustomError = { msg?: string; catchError?: boolean; message?: string; code?: number };
@@ -59,7 +58,7 @@ function httpClientErrorHandler(err: CustomError | AxiosError) {
 
 httpClient.interceptors.response.use(httpStatusInterceptor);
 
-export function get<T>(path: string, params?: HttpData, config?: Partial<HttpConfig>) {
+export function get<T>(path: string, params?: HttpPayload, config?: Partial<HttpConfig>) {
   if (!params) params = {};
   if (!config) config = { loading: true, catchError: true };
   if (config.loading) showLoading();
@@ -72,7 +71,7 @@ export function get<T>(path: string, params?: HttpData, config?: Partial<HttpCon
     .catch(httpClientErrorHandler);
 }
 
-export function post<T>(path: string, data?: HttpData, config?: Partial<HttpConfig>) {
+export function post<T>(path: string, data?: HttpPayload, config?: Partial<HttpConfig>) {
   if (!data) data = {};
   if (!config) config = { loading: true, catchError: true };
   if (config.loading) showLoading();
