@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import type { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-import { showModal, showLoading, hideLoading } from '@iivu/utils';
+import * as iivu from '@iivu/utils';
 
 type HttpConfig = { loading: boolean; catchError: boolean };
 type HttpData = { [key: string]: any };
@@ -12,9 +12,26 @@ type CustomError = { msg?: string; catchError?: boolean; message?: string; code?
 const httpClient = axios.create({
   baseURL: __VITE_COMMAND__ === 'build' ? import.meta.env.APP_API_PREFIX : '/api',
   timeout: 20000,
-  // withCredentials: true,
 });
 const defaultHttpConfig: HttpConfig = { loading: true, catchError: true };
+let loadingCount = 0;
+
+function showLoading(text?: string) {
+  loadingCount+=1;
+  iivu.showLoading(text);
+}
+
+function hideLoading(focus = false) {
+  if (focus) {
+    loadingCount = 0;
+    iivu.hideLoading();
+    return;
+  }
+  loadingCount = Math.max(loadingCount - 1, 0);
+  if (loadingCount === 0) {
+    iivu.hideLoading();
+  }
+}
 
 function httpStatusInterceptor(res: AxiosResponse<BaseApiResponse>) {
   const data = res.data;
@@ -31,11 +48,11 @@ function httpClientErrorHandler(err: CustomError | AxiosError) {
   // axios抛出错误可以通过err.config 获取到这次请求的相关配置，包括 catchError,loading
   // @ts-ignore
   const isAxiosError = err instanceof AxiosError;
-  hideLoading();
+  if (isAxiosError) hideLoading(true);
   // @ts-ignore
   if (err.catchError || (isAxiosError && err.config && err.config.catchError)) {
     // @ts-ignore
-    showModal(err.msg || err.message || '网络繁忙');
+    iivu.showModal(err.msg || err.message || '网络繁忙');
   }
   return Promise.reject(err);
 }
