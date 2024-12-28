@@ -8,8 +8,8 @@ function createSpacing() {
 
 function createBorderRadius() {
   const borderRadius = {}
-  for (let i = 0.5; i <= 10; i += 0.5) {
-    borderRadius[i] = `${i * 0.04}rem`
+  for (let i = 1; i <= 20; i += 1) {
+    borderRadius[i] = `${i * 0.02}rem`
   }
   return borderRadius
 }
@@ -37,7 +37,7 @@ module.exports = {
       '56': ['0.56rem', '0.64rem'],
       '68': ['0.68rem', '0.76rem'],
     },
-    // 1 = 0.04rem
+    // 1 = 0.01rem
     spacing: {
       '0': '0px',
       'px': '1px',
@@ -48,6 +48,7 @@ module.exports = {
         primary: '#348379'
       },
       borderRadius: {
+        // rounded-1 = 0.02rem
         ...createBorderRadius(),
       },
     },
