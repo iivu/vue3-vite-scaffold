@@ -14,16 +14,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@iivu/utils": "2.0.7",
-    "@tanstack/vue-query": "5.29.0",
+    "@iivu/utils": "2.0.8",
+    "@tanstack/vue-query": "5.66.4",
     "animejs": "3.2.2",
-    "axios": "1.6.8",
+    "axios": "1.7.8",
     "md5": "2.3.0",
     "nanoid": "5.0.7",
     "pinia": "2.1.7",
-    "vant": "4.8.11",
-    "vue": "3.4.23",
-    "vue-router": "4.3.1"
+    "vant": "4.9.17",
+    "vue": "3.5.13",
+    "vue-router": "4.5.0"
   },
   "devDependencies": {
     "@iconify-json/ant-design": "1.1.16",
@@ -44,5 +44,5 @@
     "prettier": "3.2.5",
     "vconsole": "3.15.1"
   },
-  "packageManager": "pnpm@9.1.0+sha512.67f5879916a9293e5cf059c23853d571beaf4f753c707f40cb22bed5fb1578c6aad3b6c4107ccb3ba0b35be003eb621a16471ac836c87beb53f9d54bb4612724"
+  "packageManager": "pnpm@10.4.1+sha512.67f5879916a9293e5cf059c23853d571beaf4f753c707f40cb22bed5fb1578c6aad3b6c4107ccb3ba0b35be003eb621a16471ac836c87beb53f9d54bb4612724"
 }
